@@ -15,17 +15,25 @@ var quoteList = [{
 
 var quoteText = document.getElementsByTagName("Blockquote")[0];
 var buttonClick = document.getElementById("new-quote");
+var quoteAuthor = document.getElementsByTagName("p")[0];
 
 
 function randomQuote () {
-	var randomNumber = Math.floor(Math.random() * (quoteList.length - 0 + 1)) + 0
+	var randomNumber = Math.floor(Math.random() * (quoteList.length));
 	var rq = quoteList[randomNumber];
-	return quoteText.textContent = rq.quote;
+	console.log(randomNumber);
+	(function(){
+		return quoteText.textContent = rq.quote;
+	}());
+	(function(){
+		return quoteAuthor.textContent = rq.author;
+	}());
 }
 
 
-document.addEventListener("load", randomQuote);
-buttonClick.addEventListener("click", randomQuote); 
+	
 
+	buttonClick.addEventListener("click", randomQuote);
+	document.addEventListener("load", randomQuote);
 
 
