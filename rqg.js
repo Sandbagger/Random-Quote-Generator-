@@ -16,6 +16,7 @@ var quoteList = [{
 var quoteText = document.getElementsByTagName("Blockquote")[0];
 var buttonClick = document.getElementById("new-quote");
 var quoteAuthor = document.getElementsByTagName("p")[0];
+var twitterAnchor = document.getElementsByClassName("twitter-share-button")[0];
 
 
 function randomQuote () {
@@ -27,6 +28,10 @@ function randomQuote () {
 	}());
 	(function(){
 		return quoteAuthor.textContent = rq.author;
+	}());
+	(function(){
+		var text = rq.quote;
+		return twitterAnchor.setAttribute("href", "https://twitter.com/intent/tweet?text="+ text);
 	}());
 }
 
