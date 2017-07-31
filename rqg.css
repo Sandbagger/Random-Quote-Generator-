@@ -1,8 +1,11 @@
 body {
-	display: flex;
-	 align-items: : center;
-  justify-content: center;
   background-color: green;
+}
+
+.flexbox {
+	display: flex;
+	 align-items: center;
+  justify-content: center;
 }
 
 .rqg-container {
