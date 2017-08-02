@@ -18,6 +18,7 @@ var APIList = [];
 var quoteText = document.getElementsByTagName("Blockquote")[0];
 var buttonClick = document.getElementById("new-quote");
 var quoteAuthor = document.getElementsByTagName("p")[0];
+var twitterAnchor = document.getElementsByClassName("twitter-share-button")[0];
 
 
 function randomQuote () {
@@ -51,7 +52,7 @@ var storeResult = [];
 	}());
 	(function(){
 		var text = storeResult[0].contents.quotes[0].quote;
-		return twitterAnchor.setAttribute("href", "https://twitter.com/intent/tweet?text="+ text);
+		return document.getElementsByClassName("twitter-share-button")[0].setAttribute("href", "https://twitter.com/intent/tweet?text="+ text);
 	}());
 
       }  else {randomQuote()};
@@ -62,3 +63,5 @@ var storeResult = [];
  xhr.open("GET", "http://quotes.rest/qod.json", true);
  xhr.send(null);
 };
+
+window.onload = getJSON();
