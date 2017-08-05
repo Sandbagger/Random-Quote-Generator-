@@ -33,35 +33,55 @@ function randomQuote () {
 	}());
 }
 
-	buttonClick.addEventListener("click", getJSON);
+	buttonClick.addEventListener("click", getJSONP);
 	document.addEventListener("load", randomQuote);
 
 
-var storeResult = [];
- function getJSON () {
-   var xhr = new XMLHttpRequest(); 
- 
-   xhr.onreadystatechange = function () {
-       if (xhr.status === 200 && xhr.readyState === 4) {
-   var rq = storeResult.push(JSON.parse(xhr.response));
-      (function(){
-		return quoteText.textContent = storeResult[0].contents.quotes[0].quote;
+
+
+function mycallback (data) {
+	//strip html tags in data.content
+	var temp = document.createElement("div");
+	temp.innerHTML = data[0].content;
+	var sanitized = temp.textContent || temp.innerText;
+	
+
+	quoteText.textContent = sanitized;
+		
+	quoteAuthor.textContent = data[0].title;
+
+	var text = data[0].content;
+	document.getElementsByClassName("twitter-share-button")[0].setAttribute("href", "https://twitter.com/intent/tweet?text="+ text);
+
+	
+}
+
+function getJSONP (){
+	var tag = document.createElement("script");
+	var randNum =Math.floor(Math.random() * 20) + 1;  
+tag.src = "http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]="+randNum+"&_jsonp=mycallback";
+
+document.getElementsByTagName("head")[0].appendChild(tag);
+
+//updateQuote();
+
+}
+
+function updateQuote () {
+
+	(function(){
+		 quoteText.textContent = storeCallback[0][0].content.innerText;
 	}());
 	(function(){
-		return quoteAuthor.textContent = storeResult[0].contents.quotes[0].author;
+		 quoteAuthor.textContent = storeCallback[0][0].title;
 	}());
 	(function(){
-		var text = storeResult[0].contents.quotes[0].quote;
-		return document.getElementsByClassName("twitter-share-button")[0].setAttribute("href", "https://twitter.com/intent/tweet?text="+ text);
+		var text = storeCallback[0][0].content;
+		 document.getElementsByClassName("twitter-share-button")[0].setAttribute("href", "https://twitter.com/intent/tweet?text="+ text);
 	}());
+	
+}
 
-      }  else {randomQuote()};
+window.onload = getJSONP();
 
 
-    };
- 
- xhr.open("GET", "http://quotes.rest/qod.json", true);
- xhr.send(null);
-};
-
-window.onload = getJSON();
