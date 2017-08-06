@@ -1,4 +1,4 @@
-var quoteList = [{
+/*var quoteList = [{
 	quote: "Sometimes it lasts in love but sometimes it hurts instead",
 	author: "Adele Adkins"
 },
@@ -11,9 +11,9 @@ var quoteList = [{
 	quote: "Only I can change my life. No one can do it for me.",
 	author: "Carol Burnett"
 
-},];
+},];*/
 
-var APIList = []; 
+
 
 var quoteText = document.getElementsByTagName("Blockquote")[0];
 var buttonClick = document.getElementById("new-quote");
@@ -21,7 +21,7 @@ var quoteAuthor = document.getElementsByTagName("p")[0];
 var twitterAnchor = document.getElementsByClassName("twitter-share-button")[0];
 
 
-function randomQuote () {
+/*function randomQuote () {
 	var randomNumber = Math.floor(Math.random() * (quoteList.length));
 	var rq = quoteList[randomNumber];
 	console.log(randomNumber);
@@ -35,37 +35,41 @@ function randomQuote () {
 		var text = rq.quote;
 		return twitterAnchor.setAttribute("href", "https://twitter.com/intent/tweet?text="+ text);
 	}());
+}*/
+
+	buttonClick.addEventListener("click", getJSONP);
+	
+
+
+
+
+function mycallback (data) {
+	//strip html tags in data.content
+	var temp = document.createElement("div");
+	temp.innerHTML = data[0].content;
+	var sanitized = temp.textContent || temp.innerText;
+	
+
+	quoteText.textContent = sanitized;
+		
+	quoteAuthor.textContent = data[0].title;
+
+	var text = data[0].content;
+	document.getElementsByClassName("twitter-share-button")[0].setAttribute("href", "https://twitter.com/intent/tweet?text="+ text);
 }
 
-	buttonClick.addEventListener("click", getJSON);
-	document.addEventListener("load", randomQuote);
+function getJSONP (){
+	var tag = document.createElement("script");
+	var randNum =Math.floor(Math.random() * 20) + 1;  
+tag.src = "http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]="+randNum+"&_jsonp=mycallback";
+
+document.getElementsByTagName("head")[0].appendChild(tag);
 
 
-var storeResult = [];
- function getJSON () {
-   var xhr = new XMLHttpRequest(); 
- 
-   xhr.onreadystatechange = function () {
-       if (xhr.status === 200 && xhr.readyState === 4) {
-   var rq = storeResult.push(JSON.parse(xhr.response));
-      (function(){
-		return quoteText.textContent = storeResult[0].contents.quotes[0].quote;
-	}());
-	(function(){
-		return quoteAuthor.textContent = storeResult[0].contents.quotes[0].author;
-	}());
-	(function(){
-		var text = storeResult[0].contents.quotes[0].quote;
-		return document.getElementsByClassName("twitter-share-button")[0].setAttribute("href", "https://twitter.com/intent/tweet?text="+ text);
-	}());
 
-      }  else {randomQuote()};
+}
 
 
-    };
- 
- xhr.open("GET", "http://quotes.rest/qod.json", true);
- xhr.send(null);
-};
+window.onload = getJSONP();
 
-window.onload = getJSON();
+
