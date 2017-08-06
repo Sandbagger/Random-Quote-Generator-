@@ -3,27 +3,25 @@
 <head>
 	<title></title>
 	<link rel="stylesheet" type="text/css" href="rqg.css">
+	<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
 </head>
 <body>
-<div class="flexbox">
-	<div class="rqg-container" id="quote-box">
-		<h1>Random Quote Generator</h1>
-		<i class="fa fa-quote-left" aria-hidden="true"></i>
-		<blockquote id="text">Original Text</blockquote>
-		<p id="author">author<p>
-		<div class="button-container">
-			<button type="button" id="new-quote">Quote</button>
-			<a class="twitter-share-button"
-  href="https://twitter.com/intent/tweet">
-Tweet</a>
-<i class="fa fa-twitter-square" aria-hidden="true" id="tweet-quote"></i>
+<div class="container"> 
+		<div class="randqg">
+			<header id="title">Random Quote <br> Generator</header>
+			<div class="subcontainer">
+				<i class="fa fa-quote-left fa-3x" aria-hidden="true"></i>
+				<a class="twitter-share-button" href="https://twitter.com/intent/tweet"><i class="fa fa-twitter-square fa-3x" aria-hidden="true"></i></a>
+				</div>
+			<blockquote id="text">Original Text</blockquote>
+			<div class="subcontainer">
+				<p id="author">author</p>
+				<i class="fa fa-quote-right" aria-hidden="true"></i>	
+				</div>
+			<button type="button" id="new-quote">New Quote</button>
 		</div>
-
-	</div>
-
 </div>
-
 
 </body>
 <script src="https://use.fontawesome.com/02b956c77d.js"></script>
