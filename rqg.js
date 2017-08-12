@@ -1,8 +1,8 @@
+
 /*var quoteList = [{
 	quote: "Sometimes it lasts in love but sometimes it hurts instead",
 	author: "Adele Adkins"
 },
-
 {
 	quote: "I always like to look on the optimistic side of life, but I am realistic enough to know that life is a complex matter.",
 	author: "Walt Disney",
@@ -10,7 +10,6 @@
 {
 	quote: "Only I can change my life. No one can do it for me.",
 	author: "Carol Burnett"
-
 },];*/
 
 
