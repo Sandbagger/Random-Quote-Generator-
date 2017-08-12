@@ -50,7 +50,13 @@ function mycallback (data) {
 	temp.innerHTML = data[0].content;
 	var sanitized = temp.textContent || temp.innerText;
 	
+
+	
 	blockquoteText.textContent = sanitized;
+	quoteAuthor.textContent = data[0].title;
+
+
+	var maxCharLength = 137 - data[0].length;
 
 	if (blockquoteText.textContent.length > 140) {
 		getJSONP();
@@ -60,8 +66,9 @@ function mycallback (data) {
 		
 	quoteAuthor.textContent = data[0].title;
 
-	var text = blockquoteText.textContent;
-	document.getElementsByClassName("twitter-share-button")[0].setAttribute("href", "https://twitter.com/intent/tweet?text="+ text);
+	var quote = blockquoteText.textContent;
+	var author = quoteAuthor.textContent;
+	document.getElementsByClassName("twitter-share-button")[0].setAttribute("href", "https://twitter.com/intent/tweet?text="+ "\""+ quote + "\"" + " -" + author);
 	}
 }
 
