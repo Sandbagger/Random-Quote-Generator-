@@ -12,20 +12,12 @@
 	author: "Carol Burnett"
 },];*/
 
-
-
-var quoteText = document.getElementsByTagName("Blockquote")[0];
-var buttonClick = document.getElementById("new-quote");
-var quoteAuthor = document.getElementsByTagName("p")[0];
-var twitterAnchor = document.getElementsByClassName("twitter-share-button")[0];
-
-
 /*function randomQuote () {
 	var randomNumber = Math.floor(Math.random() * (quoteList.length));
 	var rq = quoteList[randomNumber];
 	console.log(randomNumber);
 	(function(){
-		return quoteText.textContent = rq.quote;
+		return blockquoteText.textContent = rq.quote;
 	}());
 	(function(){
 		return quoteAuthor.textContent = rq.author;
@@ -36,26 +28,12 @@ var twitterAnchor = document.getElementsByClassName("twitter-share-button")[0];
 	}());
 }*/
 
-	buttonClick.addEventListener("click", getJSONP);
-	
 
+var blockquoteText = document.getElementsByTagName("Blockquote")[0];
+var buttonClick = document.getElementById("new-quote");
+var quoteAuthor = document.getElementsByTagName("p")[0];
+var twitterAnchor = document.getElementsByClassName("twitter-share-button")[0];
 
-
-
-function mycallback (data) {
-	//strip html tags in data.content
-	var temp = document.createElement("div");
-	temp.innerHTML = data[0].content;
-	var sanitized = temp.textContent || temp.innerText;
-	
-
-	quoteText.textContent = sanitized;
-		
-	quoteAuthor.textContent = data[0].title;
-
-	var text = data[0].content;
-	document.getElementsByClassName("twitter-share-button")[0].setAttribute("href", "https://twitter.com/intent/tweet?text="+ text);
-}
 
 function getJSONP (){
 	var tag = document.createElement("script");
@@ -64,11 +42,30 @@ tag.src = "http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[p
 
 document.getElementsByTagName("head")[0].appendChild(tag);
 
+}
 
+function mycallback (data) {
+	//strip html tags in data.content
+	var temp = document.createElement("div");
+	temp.innerHTML = data[0].content;
+	var sanitized = temp.textContent || temp.innerText;
+	
+	blockquoteText.textContent = sanitized;
 
+	if (blockquoteText.textContent.length > 140) {
+		getJSONP();
+	} 
+
+	else {
+		
+	quoteAuthor.textContent = data[0].title;
+
+	var text = blockquoteText.textContent;
+	document.getElementsByClassName("twitter-share-button")[0].setAttribute("href", "https://twitter.com/intent/tweet?text="+ text);
+	}
 }
 
 
 window.onload = getJSONP();
-
+buttonClick.addEventListener("click", getJSONP);
 
