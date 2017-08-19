@@ -38,7 +38,7 @@ var twitterAnchor = document.getElementsByClassName("twitter-share-button")[0];
 function getJSONP (){
 	var tag = document.createElement("script");
 	var randNum =Math.floor(Math.random() * 20) + 1;  
-tag.src = "http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]="+randNum+"&_jsonp=mycallback";
+tag.src = "https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]="+randNum+"&_jsonp=mycallback";
 
 document.getElementsByTagName("head")[0].appendChild(tag);
 
