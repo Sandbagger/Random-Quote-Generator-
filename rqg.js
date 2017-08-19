@@ -68,4 +68,3 @@ function mycallback (data) {
 
 window.onload = getJSONP();
 buttonClick.addEventListener("click", getJSONP);
-
