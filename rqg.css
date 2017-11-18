@@ -29,9 +29,6 @@ body {
   background-color: #4ABDAC;
 }
 
-.randqg:hover{
-	background: pink;
-}
 
 #title {
 font-size: 3rem;
@@ -75,8 +72,10 @@ blockquote {
 	width: 75%;
 }
 
+
+
 p {
-	font-size: 1rem;
+	font-size: 1.5rem;
 	background: white;
 }
 
