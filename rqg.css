@@ -32,8 +32,9 @@ body {
 
 #title {
 font-size: 3rem;
-margin: auto;
+margin: 2em;
 color: black;
+
 }
 
 span{
@@ -50,6 +51,17 @@ display: flex;
 }
 
 
+.text-area{
+  width: 75%;
+  height: 50%;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+
 #new-quote {
 	height: 25%;
 	width: 33%;
@@ -62,12 +74,10 @@ display: flex;
 	transition: background-color 0.5s ease;
 }
 
-header {
-	padding-top: 10%;
-}
+
 
 blockquote {
-	font-size: 2rem;
+	font-size: 1rem;
 	background: white;
 	width: 75%;
 }
@@ -185,5 +195,21 @@ p {
   animation-timing-function: linear;
   -webkit-animation-iteration-count: 1;
   animation-iteration-count: 1;
+}
+
+.button{
+  width: 20%;
+  height: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+.author-tweet{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 

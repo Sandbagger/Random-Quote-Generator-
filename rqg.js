@@ -1,5 +1,5 @@
 var blockquoteText = document.getElementsByTagName("Blockquote")[0];
-var buttonClick = document.getElementById("new-quote");
+var buttonClick = document.getElementsByClassName("button")[0];
 var quoteAuthor = document.getElementsByTagName("p")[0];
 var twitterAnchor = document.getElementsByClassName("twitter-share-button")[0];
 
@@ -81,37 +81,16 @@ var jsonp = function(url, options) {
 		return filtered;
 	}).then(function(a){
 		 randomQuote();
-         blockquoteText.addEventListener("click", randomQuote);
+         buttonClick.addEventListener("click", randomQuote);
 	})
   }
 
 }
-/*
-$.getJSON("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&_jsonp=?", function(a) {
- a.foreach
 
- var content = a.content.
-
-  $("Blockquote").append(a[0].content.textContent);
-  	$("#author").append(a[0].title);
-});*/
   
 
 var arr = [];
 
-/*function mycallback (data) {
-	//strip html tags in data.content
-
-	var filtered = data.filter(function(i){
-		if (i.content.length + i.title.length < 152){
-			return i;
-		}
-	})
-
-	arr.push(filtered);
-}
-
-*/
 
 function randomQuote(){
 	//update text
@@ -130,16 +109,7 @@ function randomQuote(){
 	document.getElementById('author').innerHTML = arr[0][randNum].title;
 }
 	
-	
-/*
-		
-	quoteAuthor.textContent = data[0].title;
 
-	var text = blockquoteText.textContent;
-	document.getElementsByClassName("twitter-share-button")[0].setAttribute("href", "https://twitter.com/intent/tweet?text="+ text);
-	}
-}
-*/
 
 window.onload = jsonp("https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=30&");
-//buttonClick.addEventListener("click", getJSONP);
+
