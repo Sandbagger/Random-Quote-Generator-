@@ -23,9 +23,6 @@ body {
   height: 80%;
   border: 5px solid white;
   border-radius: 15px;
-  overflow: scroll;
-  overflow-y: auto;
-  overflow-x: auto;
   background-color: #4ABDAC;
 }
 
@@ -81,7 +78,6 @@ blockquote {
 	background: white;
 	width: 75%;
 }
-
 
 
 p {
@@ -213,3 +209,36 @@ p {
   justify-content: center;
 }
 
+@media (max-width: 600px){
+ .text-area {
+    width: 75%;
+    height: 50%;
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+
+  .randqg {
+    width: 90%;
+    height: 95%;
+  }
+
+  .subcontainer {
+    width: 80%;
+    height: 30%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+blockquote {
+    font-size: 1rem;
+}
+
+.fa-3x{
+  font-size: 1em !important;
+}
+
+#title {
+font-size: 2em;
+margin: 1em;
+
+}
