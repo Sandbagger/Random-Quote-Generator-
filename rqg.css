@@ -36,6 +36,8 @@ color: black;
 
 span{
 	background: white;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
 .subcontainer{
@@ -200,6 +202,7 @@ p {
   justify-content: center;
   align-items: center;
   background-color: white;
+  cursor: pointer;
 }
 
 .author-tweet{
