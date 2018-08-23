@@ -105,8 +105,15 @@ function randomQuote(){
     blockquoteText.textContent = sanitized;   
 
     document.getElementsByClassName("twitter-share-button")[0].setAttribute("href", "https://twitter.com/intent/tweet?text=" + sanitized);
-	//update author
-	document.getElementById('author').innerHTML = arr[0][randNum].title;
+    //update author
+    //convert name to camel case
+    
+    let titleCase = arr[0][randNum].title
+    .split(' ')
+    .map(i => i.charAt(0).toUpperCase() + i.slice(1).toLowerCase())
+    .join(' '); 
+        
+	document.getElementById('author').innerHTML = titleCase;
 }
 	
 
