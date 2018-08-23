@@ -96,7 +96,7 @@ function randomQuote(){
 	//update text
 
     
-	var randNum =Math.floor(Math.random() * arr[0].length-1);
+	var randNum =Math.floor(Math.random() * arr[0].length);
 
 
     var temp = document.createElement("div");
